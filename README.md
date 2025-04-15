@@ -14,7 +14,8 @@
 Descreva os objetivos do seu projeto e como ele funciona.
 
 ## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
+![Questão 834](./Grafos-1/Questão-834/resultado.png)
+
 
 ## Instalação
 **Linguagem**: xxxxxx<br>
