@@ -14,7 +14,12 @@
 Descreva os objetivos do seu projeto e como ele funciona.
 
 ## Screenshots
-![Questão 834](./Grafos-1/Questão-834/resultado.png)
+![Questão 834](./Grafos-1/Questão-834/resultado_834.png)
+*Resultado da Questão 834*
+
+![Questão 133](./Grafos-1/Questão-133/resultado_133.png)
+*Resultado da Questão 133*
+
 
 
 ## Instalação
