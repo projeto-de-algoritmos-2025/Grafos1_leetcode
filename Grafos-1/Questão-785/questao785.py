@@ -22,3 +22,36 @@ class Solution:
                             # Conflito: dois nós conectados têm a mesma cor
                             return False
         return True
+
+# input pelo terminal
+print("Digite o número de vértices:")
+n = int(input())
+
+print("Digite o número de arestas:")
+m = int(input())
+
+grafo = [[] for _ in range(n)]
+print("Digite as arestas no formato: u v (espaço entre os números)")
+for _ in range(m):
+    u, v = map(int, input().split())
+    grafo[u].append(v)
+    grafo[v].append(u)  # Grafo não direcionado
+
+# Verifica se o grafo é bipartido
+solucao = Solution()
+if solucao.isBipartite(grafo):
+    print("O grafo é bipartido.")
+else:
+    print("O grafo NÃO é bipartido.")
+
+# exemplo de entrada 
+
+# Digite o número de vértices:
+# 4
+# Digite o número de arestas:
+# 4
+# Digite as arestas no formato: u v (espaço entre os números)
+# 0 1
+# 1 2
+# 2 3
+# 3 0
