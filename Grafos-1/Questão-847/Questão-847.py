@@ -1,40 +1,47 @@
 from collections import deque
+import ast
 
-class Solution:
-    def shortestPathLength(self, graph: List[List[int]]) -> int:
-        n = len(graph)
-        all_visited = (1 << n) - 1
+class Solucao:
+    def menorCaminhoQueVisitaTodosOsNos(self, grafo: list[list[int]]) -> int:
+        n = len(grafo)
+        todos_visitados = (1 << n) - 1
 
-        queue = deque()
-        seen = set()
+        fila = deque()
+        visitados = set()
 
         for i in range(n):
-            start_node = i
-            start_mask = 1 << start_node
-            start_dist = 0
+            no_inicial = i
+            mascara_inicial = 1 << no_inicial
+            distancia_inicial = 0
 
-            queue.append((start_node, start_mask, start_dist))
-            seen.add((start_node, start_mask))
+            fila.append((no_inicial, mascara_inicial, distancia_inicial))
+            visitados.add((no_inicial, mascara_inicial))
 
-        while queue:
-            node, visited, dist = queue.popleft()
+        while fila:
+            no_atual, mascara_atual, distancia_atual = fila.popleft()
 
-            current_node = node
-            current_mask = visited
-            current_dist = dist
+            if mascara_atual == todos_visitados:
+                return distancia_atual
 
-            if current_mask == all_visited:
-                return current_dist
+            for vizinho in grafo[no_atual]:
+                proximo_bit = 1 << vizinho
+                proxima_mascara = mascara_atual | proximo_bit
+                estado = (vizinho, proxima_mascara)
 
-            for neighbor in graph[current_node]:
-                next_bit = 1 << neighbor
-                next_mask = current_mask | next_bit
-                state = (neighbor, next_mask)
-
-                was_seen = state in seen
-                if not was_seen:
-                    seen.add(state)
-                    next_dist = current_dist + 1
-                    queue.append((neighbor, next_mask, next_dist))
+                if estado not in visitados:
+                    visitados.add(estado)
+                    fila.append((vizinho, proxima_mascara, distancia_atual + 1))
 
         return -1
+
+def executar():
+    entrada = input("Digite o grafo como lista de adjacência (ex: [[1,2,3],[0],[0],[0]]): ")
+    grafo = ast.literal_eval(entrada)
+
+    solucao = Solucao()
+    resposta = solucao.menorCaminhoQueVisitaTodosOsNos(grafo)
+
+    print(f"\nMenor caminho que visita todos os nós: {resposta}")
+
+if __name__ == "__main__":
+    executar()

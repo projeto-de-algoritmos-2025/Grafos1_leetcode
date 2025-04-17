@@ -1,28 +1,43 @@
 from collections import defaultdict
+import ast
 
-class Solution:
-    def sumOfDistancesInTree(self, n: int, edges: List[List[int]]) -> List[int]:
-        tree = defaultdict(list)
-        for u, v in edges:
-            tree[u].append(v)
-            tree[v].append(u)
+class Solucao:
+    def somaDasDistanciasNaArvore(self, n: int, arestas: list) -> list:
+        arvore = defaultdict(list)
+        for u, v in arestas:
+            arvore[u].append(v)
+            arvore[v].append(u)
 
-        res = [0] * n
-        count = [1] * n
+        resultado = [0] * n
+        contador = [1] * n
 
-        def postorder(node, parent):
-            for neighbor in tree[node]:
-                if neighbor != parent:
-                    postorder(neighbor, node)
-                    count[node] += count[neighbor]
-                    res[node] += res[neighbor] + count[neighbor]
+        def pos_ordem(no, pai):
+            for vizinho in arvore[no]:
+                if vizinho != pai:
+                    pos_ordem(vizinho, no)
+                    contador[no] += contador[vizinho]
+                    resultado[no] += resultado[vizinho] + contador[vizinho]
 
-        def preorder(node, parent):
-            for neighbor in tree[node]:
-                if neighbor != parent:
-                    res[neighbor] = res[node] - count[neighbor] + (n - count[neighbor])
-                    preorder(neighbor, node)
+        def pre_ordem(no, pai):
+            for vizinho in arvore[no]:
+                if vizinho != pai:
+                    resultado[vizinho] = resultado[no] - contador[vizinho] + (n - contador[vizinho])
+                    pre_ordem(vizinho, no)
 
-        postorder(0, -1)
-        preorder(0, -1)
-        return res
+        pos_ordem(0, -1)
+        pre_ordem(0, -1)
+        return resultado
+
+def executar():
+    n = int(input("n = "))
+    bordas = input("bordas = ")
+    arestas = ast.literal_eval(bordas)
+
+    solucao = Solucao()
+    resposta = solucao.somaDasDistanciasNaArvore(n, arestas)
+
+    print("\nSoma das distâncias para cada nó:")
+    print(resposta)
+
+if __name__ == "__main__":
+    executar()
