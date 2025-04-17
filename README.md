@@ -20,8 +20,6 @@ Descreva os objetivos do seu projeto e como ele funciona.
 *Resultado da Questão 133*
 ![Questão 133](./Grafos-1/Questão-133/resultado_133.png)
 
-*Resultado da Questão 847*
-![Questão 133](./Grafos-1/Questão-847/resultado_847.png)
 
 
 
