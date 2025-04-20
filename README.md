@@ -37,8 +37,11 @@ Foram 4 questões, duas nível médio e duas nível difícil vindas do leetcode.
 
 ![Questão 2608](./Grafos-1/Questão-2608/Resultado-2608.png)
 
+## Vídeo da entrega
 
+[Link para gravação da entrega](https://www.youtube.com/watch?v=2ZHFcAj_N-4)
 
+Fonte: Autores, Gravado dia 17/04/2025
 
 ## Funcionamento 
 
